@@ -237,7 +237,11 @@ def format_message(local, national, date):
 
 async def main():
     print(f"=== Monitor Przetargów — {datetime.now().strftime('%Y-%m-%d %H:%M')} ===\n")
-
+    
+print(f"DEBUG TG_TOKEN set: {bool(TG_TOKEN)} (len={len(TG_TOKEN)})")
+    print(f"DEBUG TG_CHAT_ID set: {bool(TG_CHAT_ID)}")
+    print(f"DEBUG PLATFORMA_USER set: {bool(PLATFORMA_USER)}")
+    print(f"DEBUG BAZA_USER set: {bool(BAZA_USER)}")
     all_results = []
 
     async with async_playwright() as p:
