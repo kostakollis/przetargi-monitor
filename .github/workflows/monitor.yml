@@ -1,0 +1,44 @@
+name: Monitor Przetargów
+
+on:
+  schedule:
+    - cron: '0 8 */2 * *'
+  workflow_dispatch:
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium --with-deps
+
+      - name: Run monitor
+        env:
+          PLATFORMA_LOGIN: ${{ secrets.PLATFORMA_LOGIN }}
+          PLATFORMA_HASLO: ${{ secrets.PLATFORMA_HASLO }}
+          BAZA_LOGIN: ${{ secrets.BAZA_LOGIN }}
+          BAZA_HASLO: ${{ secrets.BAZA_HASLO }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python monitor.py
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: results.json
+          retention-days: 30
