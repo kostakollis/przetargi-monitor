@@ -28,12 +28,12 @@ LOCAL_KEYWORDS = [
 ]
 
 # Sekrety z GitHub Actions
-PLATFORMA_USER = os.getenv("wandercraft.studios@gmail.com", "")
-PLATFORMA_PASS = os.getenv("xahkut-3jakxa-vifkaZ", "")
-BAZA_USER = os.getenv("wandercraft.studios@gmail.com", "")
-BAZA_PASS = os.getenv("vurvof-gyjqeg-Qavzu2", "")
-TG_TOKEN = os.getenv("8648293459:AAHEuyHCO6ee3cRv1racn-eWnB7MJpvBYSM", "")
-TG_CHAT_ID = os.getenv("144753180", "")
+PLATFORMA_USER = os.getenv("PLATFORMA_LOGIN", "")
+PLATFORMA_PASS = os.getenv("PLATFORMA_HASLO", "")
+BAZA_USER = os.getenv("BAZA_LOGIN", "")
+BAZA_PASS = os.getenv("BAZA_HASLO", "")
+TG_TOKEN = os.getenv("TELEGRAM_TOKEN", "")
+TG_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
 
 
 # ─── HELPERS ────────────────────────────────────────────────────────────────────
